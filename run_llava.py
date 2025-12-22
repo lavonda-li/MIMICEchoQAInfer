@@ -35,13 +35,12 @@ class LLavaMedInference:
         print(f"Loading LLaVA-Med model: {model_id}")
 
         model_name = get_model_name_from_path(model_id)
-        # Use 4-bit quantization to fit in T4 GPU memory
         self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
             model_path=model_id,
             model_base=None,
             model_name=model_name,
             load_8bit=False,
-            load_4bit=True,
+            load_4bit=False,
             device="cuda"
         )
 
@@ -69,10 +68,14 @@ class LLavaMedInference:
             prompt_text, self.tokenizer, self.IMAGE_TOKEN_INDEX, return_tensors="pt"
         ).unsqueeze(0).to(self.model.device)
 
+        attention_mask = torch.ones_like(input_ids)
+
         with torch.inference_mode():
             output_ids = self.model.generate(
                 input_ids,
                 images=image_tensor,
+                attention_mask=attention_mask,
+                pad_token_id=self.tokenizer.eos_token_id,
                 do_sample=False,
                 max_new_tokens=100,
                 use_cache=True

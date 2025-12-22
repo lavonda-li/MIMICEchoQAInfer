@@ -1,0 +1,322 @@
+{
+  "overall": {
+    "correct": 154,
+    "total": 622,
+    "errors": 0,
+    "accuracy": 24.758842443729904
+  },
+  "by_structure": {
+    "Aortic Valve": {
+      "correct": 25,
+      "total": 132,
+      "accuracy": 18.939393939393938
+    },
+    "Pericardium": {
+      "correct": 24,
+      "total": 82,
+      "accuracy": 29.268292682926827
+    },
+    "Mitral Valve": {
+      "correct": 18,
+      "total": 87,
+      "accuracy": 20.689655172413794
+    },
+    "Left Ventricle": {
+      "correct": 26,
+      "total": 162,
+      "accuracy": 16.049382716049383
+    },
+    "Right Ventricle": {
+      "correct": 13,
+      "total": 23,
+      "accuracy": 56.52173913043478
+    },
+    "Left Atrium": {
+      "correct": 15,
+      "total": 38,
+      "accuracy": 39.473684210526315
+    },
+    "Tricuspid Valve": {
+      "correct": 9,
+      "total": 23,
+      "accuracy": 39.130434782608695
+    },
+    "Atrial Septum": {
+      "correct": 3,
+      "total": 24,
+      "accuracy": 12.5
+    },
+    "Aorta": {
+      "correct": 7,
+      "total": 18,
+      "accuracy": 38.88888888888889
+    },
+    "Right Atrium": {
+      "correct": 3,
+      "total": 11,
+      "accuracy": 27.27272727272727
+    },
+    "Pulmonary Artery": {
+      "correct": 4,
+      "total": 12,
+      "accuracy": 33.33333333333333
+    },
+    "Resting Segmental Wall Motion Analysis": {
+      "correct": 2,
+      "total": 5,
+      "accuracy": 40.0
+    },
+    "Pulmonic Valve": {
+      "correct": 4,
+      "total": 4,
+      "accuracy": 100.0
+    },
+    "IVC": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 100.0
+    }
+  },
+  "by_view": {
+    "A5C": {
+      "correct": 5,
+      "total": 16,
+      "accuracy": 31.25
+    },
+    "PLAX_Zoom_out": {
+      "correct": 10,
+      "total": 49,
+      "accuracy": 20.408163265306122
+    },
+    "PLAX": {
+      "correct": 9,
+      "total": 38,
+      "accuracy": 23.684210526315788
+    },
+    "Subcostal_4C": {
+      "correct": 11,
+      "total": 52,
+      "accuracy": 21.153846153846153
+    },
+    "A3C": {
+      "correct": 16,
+      "total": 51,
+      "accuracy": 31.372549019607842
+    },
+    "DOPPLER_PLAX_RVOT": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
+    "PSAX_(level_of_papillary_muscles)": {
+      "correct": 7,
+      "total": 27,
+      "accuracy": 25.925925925925924
+    },
+    "A2C": {
+      "correct": 5,
+      "total": 26,
+      "accuracy": 19.230769230769234
+    },
+    "PSAX_(level_great_vessels)_focus_on_TV": {
+      "correct": 1,
+      "total": 5,
+      "accuracy": 20.0
+    },
+    "DOPPLER_PSAX_MV": {
+      "correct": 3,
+      "total": 14,
+      "accuracy": 21.428571428571427
+    },
+    "DOPPLER_A4C_IVS": {
+      "correct": 4,
+      "total": 17,
+      "accuracy": 23.52941176470588
+    },
+    "DOPPLER_A5C": {
+      "correct": 6,
+      "total": 33,
+      "accuracy": 18.181818181818183
+    },
+    "DOPPLER_PLAX_AV_MV": {
+      "correct": 2,
+      "total": 17,
+      "accuracy": 11.76470588235294
+    },
+    "DOPPLER_A2C": {
+      "correct": 3,
+      "total": 12,
+      "accuracy": 25.0
+    },
+    "A4C_MV": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "Subcostal_Abdominal_Aorta": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "DOPPLER_A3C": {
+      "correct": 2,
+      "total": 8,
+      "accuracy": 25.0
+    },
+    "DOPPLER_SC_4C_IAS": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "PSAX_(level_of_apex)": {
+      "correct": 2,
+      "total": 30,
+      "accuracy": 6.666666666666667
+    },
+    "DOPPLER_PSAX_level_great_vessels_AV": {
+      "correct": 1,
+      "total": 14,
+      "accuracy": 7.142857142857142
+    },
+    "PLAX_AV_MV": {
+      "correct": 2,
+      "total": 13,
+      "accuracy": 15.384615384615385
+    },
+    "A4C": {
+      "correct": 28,
+      "total": 72,
+      "accuracy": 38.88888888888889
+    },
+    "DOPPLER_PSAX_level_great_vessels_TV": {
+      "correct": 2,
+      "total": 10,
+      "accuracy": 20.0
+    },
+    "DOPPLER_A4C_MV": {
+      "correct": 0,
+      "total": 11,
+      "accuracy": 0.0
+    },
+    "PLAX_zoomed_AV": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "DOPPLER_PLAX_MV_zoomed": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 50.0
+    },
+    "DOPPLER_A4C_TV": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "DOPPLER_PSAX_level_great_vessels_PA": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 50.0
+    },
+    "PSAX_(level_great_vessels)_zoomed_AV": {
+      "correct": 2,
+      "total": 2,
+      "accuracy": 100.0
+    },
+    "DOPPLER_SC_4C_IVS": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "DOPPLER_A3C_AV": {
+      "correct": 1,
+      "total": 10,
+      "accuracy": 10.0
+    },
+    "PSAX_(level_great_vessels)": {
+      "correct": 3,
+      "total": 11,
+      "accuracy": 27.27272727272727
+    },
+    "DOPPLER_SSN_Aortic_Arch": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 25.0
+    },
+    "DOPPLER_PLAX_RVIT": {
+      "correct": 2,
+      "total": 5,
+      "accuracy": 40.0
+    },
+    "DOPPLER_A3C_MV": {
+      "correct": 2,
+      "total": 5,
+      "accuracy": 40.0
+    },
+    "DOPPLER_A4C_Pulvns": {
+      "correct": 4,
+      "total": 12,
+      "accuracy": 33.33333333333333
+    },
+    "Subcostal_IVC": {
+      "correct": 4,
+      "total": 8,
+      "accuracy": 50.0
+    },
+    "SSN_aortic_arch": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 50.0
+    },
+    "A4C_RV": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 50.0
+    },
+    "PSAX_(level_great_vessels)_focus_on_PV_and_PA": {
+      "correct": 4,
+      "total": 6,
+      "accuracy": 66.66666666666666
+    },
+    "A3C_LV": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 50.0
+    },
+    "A4C_LV": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "PLAX_RV_inflow": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 25.0
+    },
+    "PLAX_zoomed_MV": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "DOPPLER_PLAX_AV_zoomed": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "A2C_LV": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 33.33333333333333
+    },
+    "PSAX_(level_of_MV)": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "A4C_LA": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 100.0
+    }
+  }
+}
