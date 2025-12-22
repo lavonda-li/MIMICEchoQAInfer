@@ -1,0 +1,25 @@
+name: echoqa
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch=2.1
+  - torchvision
+  - pytorch-cuda=11.8
+  - git
+  - pip:
+      - transformers>=4.50.0
+      - accelerate
+      - pydicom
+      - pillow
+      - numpy
+      - pandas
+      - tqdm
+      - huggingface_hub
+      - bitsandbytes
+      - sentencepiece
+      - einops
+      - flash-attn --no-build-isolation

@@ -1,0 +1,102 @@
+[
+  {
+    "messages_id": "8e75dbe6-e46f-41e4-94a7-36d91068b29d",
+    "question": "What is the severity of the aortic valve thickening?",
+    "prediction": "B. Mild\n",
+    "ground_truth": "Mild",
+    "correct_option": "B",
+    "structure": "Aortic Valve",
+    "view": "A5C",
+    "error": false
+  },
+  {
+    "messages_id": "c50905aa-b81a-4d67-9f3f-60839cbfa4aa",
+    "question": "Is there pericardial effusion?",
+    "prediction": "B. No\n",
+    "ground_truth": "No",
+    "correct_option": "B",
+    "structure": "Pericardium",
+    "view": "PLAX_Zoom_out",
+    "error": false
+  },
+  {
+    "messages_id": "db7ae2ef-273a-4ab3-bd3b-d346692af919",
+    "question": "What is the severity of thickness of mitral valve leaflets?",
+    "prediction": "A. Normal\n",
+    "ground_truth": "Mild",
+    "correct_option": "B",
+    "structure": "Mitral Valve",
+    "view": "PLAX",
+    "error": false
+  },
+  {
+    "messages_id": "6dfae888-2102-4aac-ac82-8ccb5efd4088",
+    "question": "What is the ejection fraction?",
+    "prediction": "C. 54%\n",
+    "ground_truth": "54%",
+    "correct_option": "C",
+    "structure": "Left Ventricle",
+    "view": "Subcostal_4C",
+    "error": false
+  },
+  {
+    "messages_id": "5921e583-9df1-45d6-825f-4b3399b0f24a",
+    "question": "What is the severity of mitral stenosis?",
+    "prediction": "A. Normal\n",
+    "ground_truth": "Normal",
+    "correct_option": "A",
+    "structure": "Mitral Valve",
+    "view": "A3C",
+    "error": false
+  },
+  {
+    "messages_id": "55f6fc37-9902-4fe6-8a9d-8b82f47d78e3",
+    "question": "Is the RV mildly dilated?",
+    "prediction": "A. Yes\n",
+    "ground_truth": "Yes",
+    "correct_option": "A",
+    "structure": "Right Ventricle",
+    "view": "DOPPLER_PLAX_RVOT",
+    "error": false
+  },
+  {
+    "messages_id": "b60b8403-6da8-474c-a787-9e626c54071b",
+    "question": "What is the severity of left ventricular hypertrophy?",
+    "prediction": "C\nModerate\n",
+    "ground_truth": "Mild",
+    "correct_option": "B",
+    "structure": "Left Ventricle",
+    "view": "PSAX_(level_of_papillary_muscles)",
+    "error": false
+  },
+  {
+    "messages_id": "00a54663-02ae-41c8-a64f-8ee47fa49eff",
+    "question": "What is the severity of left atrial volume index increase?",
+    "prediction": "B. Mild\n",
+    "ground_truth": "Moderate",
+    "correct_option": "C",
+    "structure": "Left Atrium",
+    "view": "PLAX",
+    "error": false
+  },
+  {
+    "messages_id": "0c34cdbb-cd7b-49a4-aca4-6b3815118bc3",
+    "question": "What is the severity of aortic valve leaflet thickening?",
+    "prediction": "B. Mild\n",
+    "ground_truth": "Mild",
+    "correct_option": "B",
+    "structure": "Aortic Valve",
+    "view": "A3C",
+    "error": false
+  },
+  {
+    "messages_id": "3b673d4f-b72b-40a0-b263-28c74352af7e",
+    "question": "Is there valvular pathology?",
+    "prediction": "B. No\n",
+    "ground_truth": "No",
+    "correct_option": "B",
+    "structure": "Mitral Valve",
+    "view": "A3C",
+    "error": false
+  }
+]
