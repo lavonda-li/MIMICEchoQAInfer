@@ -39,7 +39,7 @@ class MedGemmaInference:
         messages = [
             {
                 "role": "system",
-                "content": [{"type": "text", "text": "You are an expert cardiologist analyzing echocardiogram images. Answer the question based on the echocardiogram image provided. Give only the answer option letter and the answer text."}]
+                "content": [{"type": "text", "text": "You are an expert cardiologist analyzing echocardiogram images. Answer the question based on the echocardiogram image provided. Your response must start with the answer option letter (A, B, C, or D), followed by your reasoning."}]
             },
             {
                 "role": "user",

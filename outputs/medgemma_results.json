@@ -2,7 +2,7 @@
   {
     "messages_id": "8e75dbe6-e46f-41e4-94a7-36d91068b29d",
     "question": "What is the severity of the aortic valve thickening?",
-    "prediction": "B. Mild\n",
+    "prediction": "B. The aortic valve appears thickened, but the degree of thickening is not severe. The valve leaflets are not completely immobile, and there is some movement. Therefore, the severity is likely mild.\n\n",
     "ground_truth": "Mild",
     "correct_option": "B",
     "structure": "Aortic Valve",
@@ -12,7 +12,7 @@
   {
     "messages_id": "c50905aa-b81a-4d67-9f3f-60839cbfa4aa",
     "question": "Is there pericardial effusion?",
-    "prediction": "B. No\n",
+    "prediction": "B. No\n\nReasoning: The image shows a clear view of the heart and surrounding structures. There is no visible fluid collection around the heart, which would indicate a pericardial effusion. The heart appears to be in normal position and size.\n",
     "ground_truth": "No",
     "correct_option": "B",
     "structure": "Pericardium",

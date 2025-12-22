@@ -119,7 +119,7 @@ class LLavaMedInference:
         image_tensor = image_tensor.to(self.model.device, dtype=torch.float16)
 
         conv = self.conv_templates[self.conv_mode].copy()
-        prompt = f"You are an expert cardiologist analyzing echocardiogram images. {question}\n\nAnswer with only the option letter and answer text."
+        prompt = f"You are an expert cardiologist analyzing echocardiogram images. {question}\n\nYour response must start with the answer option letter (A, B, C, or D), followed by your reasoning."
         conv.append_message(conv.roles[0], self.DEFAULT_IMAGE_TOKEN + "\n" + prompt)
         conv.append_message(conv.roles[1], None)
         prompt_text = conv.get_prompt()
@@ -203,7 +203,7 @@ def run_inference(num_samples: int = None):
         json.dump(results, f, indent=2)
     print(f"Results saved to {output_file}")
 
-    correct = sum(1 for r in results if not r["error"] and r["correct_option"] in r["prediction"])
+    correct = sum(1 for r in results if not r["error"] and r["prediction"].strip()[:1].upper() == r["correct_option"])
     total = sum(1 for r in results if not r["error"])
     if total > 0:
         print(f"Accuracy: {correct}/{total} = {correct/total:.2%}")
