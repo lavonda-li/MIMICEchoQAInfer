@@ -192,9 +192,10 @@ class LLavaMedInference:
             model_path=model_id,
             model_base=None,
             model_name=model_name,
-            device_map="auto",
-            torch_dtype=torch.float16
+            device_map="auto"
         )
+        # Convert model to float16 for memory efficiency
+        self.model = self.model.half()
 
         self.conv_mode = "mistral_instruct"
         self.process_images = process_images
