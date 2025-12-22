@@ -82,7 +82,7 @@ def save_results(results: list, output_file: Path):
         json.dump(results, f, indent=2)
     print(f"Results saved to {output_file}")
 
-    correct = sum(1 for r in results if not r.get("error") and r["prediction"].strip()[:1].upper() == r["correct_option"])
+    correct = sum(1 for r in results if r.get("is_correct"))
     total = sum(1 for r in results if not r.get("error"))
     if total > 0:
         print(f"Accuracy: {correct}/{total} = {correct/total:.2%}")

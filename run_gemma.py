@@ -4,6 +4,7 @@ Run: python main.py --num-samples 10
 """
 
 import argparse
+import json
 
 import torch
 from PIL import Image
@@ -67,7 +68,7 @@ class MedGemmaInference:
         return self.processor.decode(generation, skip_special_tokens=True)
 
 
-def run_inference(num_samples: int = None):
+def run_inference(num_samples: int = None, save_every: int = 50):
     """Run MedGemma inference on the MIMICEchoQA dataset."""
     print(f"Loading QA data from {QA_JSON}")
     qa_data = load_qa_data()
@@ -77,10 +78,22 @@ def run_inference(num_samples: int = None):
         qa_data = qa_data[:num_samples]
         print(f"Processing {num_samples} samples")
 
+    output_file = OUTPUT_DIR / "medgemma_results.json"
+
+    # Resume from existing results if available
+    processed_ids = set()
+    results = []
+    if output_file.exists():
+        with open(output_file, "r") as f:
+            results = json.load(f)
+            processed_ids = {r["messages_id"] for r in results}
+        print(f"Resuming from {len(results)} existing results")
+
     model = MedGemmaInference()
 
-    results = []
-    for sample in tqdm(qa_data, desc="Running MedGemma inference"):
+    for i, sample in enumerate(tqdm(qa_data, desc="Running MedGemma inference")):
+        if sample["messages_id"] in processed_ids:
+            continue
         video_path = sample["videos"][0]
         dicom_path = video_path_to_dicom_path(video_path)
 
@@ -100,6 +113,7 @@ def run_inference(num_samples: int = None):
             question = format_question_with_options(sample)
             prediction = model.predict(image, question)
 
+            is_correct = prediction.strip()[:1].upper() == sample["correct_option"]
             results.append({
                 "messages_id": sample["messages_id"],
                 "question": sample["question"],
@@ -108,7 +122,8 @@ def run_inference(num_samples: int = None):
                 "correct_option": sample["correct_option"],
                 "structure": sample["structure"],
                 "view": sample["view"],
-                "error": False
+                "error": False,
+                "is_correct": is_correct
             })
 
         except Exception as e:
@@ -118,10 +133,15 @@ def run_inference(num_samples: int = None):
                 "prediction": f"ERROR: {str(e)}",
                 "ground_truth": sample["answer"],
                 "correct_option": sample["correct_option"],
-                "error": True
+                "error": True,
             })
 
-    save_results(results, OUTPUT_DIR / "medgemma_results.json")
+        # Periodic save
+        if (i + 1) % save_every == 0:
+            save_results(results, output_file)
+
+    # Final save
+    save_results(results, output_file)
     return results
 
 

@@ -6,10 +6,7 @@ Requires separate conda environment with transformers==4.36.2
 
 import json
 import argparse
-from pathlib import Path
 
-import numpy as np
-import pydicom
 import torch
 from PIL import Image
 from tqdm import tqdm
@@ -20,71 +17,15 @@ from llava.mm_utils import get_model_name_from_path, process_images, tokenizer_i
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
 from llava.conversation import conv_templates
 
-
-# Paths
-DATA_DIR = Path("/home/lavondali/MIMICEchoQAInfer/Data/mimic-iv-ext-echoqa/1.0.0/MIMICEchoQA")
-DICOM_DIR = Path("/home/lavondali/mount-folder/MIMIC-Echo-IV")
-QA_JSON = DATA_DIR / "MIMICEchoQA.json"
-OUTPUT_DIR = Path("/home/lavondali/MIMICEchoQAInfer/outputs")
-
-
-def load_qa_data(json_path: Path) -> list:
-    """Load the QA dataset."""
-    with open(json_path, "r") as f:
-        data = json.load(f)
-    return data
-
-
-def video_path_to_dicom_path(video_path: str) -> Path:
-    """Convert video path from JSON to DICOM path."""
-    parts = video_path.split("/")
-    patient_prefix = parts[3]
-    patient_id = parts[4]
-    study_id = parts[5]
-    filename = parts[6].replace(".mp4", ".dcm")
-    return DICOM_DIR / patient_prefix / patient_id / study_id / filename
-
-
-def extract_frame_from_dicom(dicom_path: Path, frame_idx: int = -1) -> Image.Image:
-    """Extract a single frame from a DICOM file."""
-    dcm = pydicom.dcmread(dicom_path)
-    pixel_array = dcm.pixel_array
-
-    if len(pixel_array.shape) == 3:
-        num_frames = pixel_array.shape[0]
-        if frame_idx == -1:
-            frame_idx = num_frames // 2
-        frame = pixel_array[frame_idx]
-    elif len(pixel_array.shape) == 4:
-        num_frames = pixel_array.shape[0]
-        if frame_idx == -1:
-            frame_idx = num_frames // 2
-        frame = pixel_array[frame_idx]
-    else:
-        frame = pixel_array
-
-    if frame.max() > 255:
-        frame = ((frame - frame.min()) / (frame.max() - frame.min()) * 255).astype(np.uint8)
-    else:
-        frame = frame.astype(np.uint8)
-
-    if len(frame.shape) == 2:
-        frame = np.stack([frame] * 3, axis=-1)
-
-    return Image.fromarray(frame)
-
-
-def format_question_with_options(sample: dict) -> str:
-    """Format the question with multiple choice options."""
-    question = sample["question"]
-    options = []
-    for opt in ["A", "B", "C", "D"]:
-        opt_text = sample.get(f"option_{opt}", "")
-        if opt_text:
-            options.append(f"{opt}. {opt_text}")
-    if options:
-        return f"{question}\n\nOptions:\n" + "\n".join(options)
-    return question
+from utils import (
+    load_qa_data,
+    video_path_to_dicom_path,
+    extract_frame_from_dicom,
+    format_question_with_options,
+    save_results,
+    OUTPUT_DIR,
+    QA_JSON,
+)
 
 
 class LLavaMedInference:
@@ -143,21 +84,32 @@ class LLavaMedInference:
         return output
 
 
-def run_inference(num_samples: int = None):
+def run_inference(num_samples: int = None, save_every: int = 50):
     """Run inference on the MIMICEchoQA dataset."""
     print(f"Loading QA data from {QA_JSON}")
-    qa_data = load_qa_data(QA_JSON)
+    qa_data = load_qa_data()
     print(f"Loaded {len(qa_data)} QA samples")
 
     if num_samples:
         qa_data = qa_data[:num_samples]
         print(f"Processing {num_samples} samples")
 
-    model = LLavaMedInference()
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_file = OUTPUT_DIR / "llava-med_results.json"
 
+    # Resume from existing results if available
+    processed_ids = set()
     results = []
-    for sample in tqdm(qa_data, desc="Running llava-med inference"):
+    if output_file.exists():
+        with open(output_file, "r") as f:
+            results = json.load(f)
+            processed_ids = {r["messages_id"] for r in results}
+        print(f"Resuming from {len(results)} existing results")
+
+    model = LLavaMedInference()
+
+    for i, sample in enumerate(tqdm(qa_data, desc="Running llava-med inference")):
+        if sample["messages_id"] in processed_ids:
+            continue
         video_path = sample["videos"][0]
         dicom_path = video_path_to_dicom_path(video_path)
 
@@ -177,6 +129,7 @@ def run_inference(num_samples: int = None):
             question = format_question_with_options(sample)
             prediction = model.predict(image, question)
 
+            is_correct = prediction.strip()[:1].upper() == sample["correct_option"]
             results.append({
                 "messages_id": sample["messages_id"],
                 "question": sample["question"],
@@ -185,7 +138,8 @@ def run_inference(num_samples: int = None):
                 "correct_option": sample["correct_option"],
                 "structure": sample["structure"],
                 "view": sample["view"],
-                "error": False
+                "error": False,
+                "is_correct": is_correct
             })
 
         except Exception as e:
@@ -195,19 +149,15 @@ def run_inference(num_samples: int = None):
                 "prediction": f"ERROR: {str(e)}",
                 "ground_truth": sample["answer"],
                 "correct_option": sample["correct_option"],
-                "error": True
+                "error": True,
             })
 
-    output_file = OUTPUT_DIR / "llava-med_results.json"
-    with open(output_file, "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"Results saved to {output_file}")
+        # Periodic save
+        if (i + 1) % save_every == 0:
+            save_results(results, output_file)
 
-    correct = sum(1 for r in results if not r["error"] and r["prediction"].strip()[:1].upper() == r["correct_option"])
-    total = sum(1 for r in results if not r["error"])
-    if total > 0:
-        print(f"Accuracy: {correct}/{total} = {correct/total:.2%}")
-
+    # Final save
+    save_results(results, output_file)
     return results
 
 
