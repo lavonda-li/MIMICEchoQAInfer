@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calculate accuracy metrics for MedGemma results."""
+"""Calculate accuracy metrics for results."""
 
 import json
 import argparse
