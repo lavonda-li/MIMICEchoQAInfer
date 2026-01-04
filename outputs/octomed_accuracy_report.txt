@@ -1,0 +1,77 @@
+============================================================
+MEDGEMMA RESULTS ACCURACY REPORT
+============================================================
+
+📊 OVERALL ACCURACY
+----------------------------------------
+Correct:       303 / 622    (48.71%)
+
+📋 ACCURACY BY STRUCTURE
+----------------------------------------
+IVC                                    1/1    (100.00%)
+Atrial Septum                         22/24   ( 91.67%)
+Resting Segmental Wall Motion Analysis    4/5    ( 80.00%)
+Pericardium                           58/82   ( 70.73%)
+Pulmonary Artery                       6/12   ( 50.00%)
+Pulmonic Valve                         2/4    ( 50.00%)
+Right Ventricle                       11/23   ( 47.83%)
+Tricuspid Valve                       11/23   ( 47.83%)
+Left Ventricle                        76/162  ( 46.91%)
+Mitral Valve                          37/87   ( 42.53%)
+Aortic Valve                          54/132  ( 40.91%)
+Aorta                                  7/18   ( 38.89%)
+Left Atrium                           12/38   ( 31.58%)
+Right Atrium                           2/11   ( 18.18%)
+
+🔍 ACCURACY BY VIEW
+----------------------------------------
+DOPPLER_SC_4C_IAS                      1/1    (100.00%)
+PSAX_(level_of_MV)                     2/2    (100.00%)
+A5C                                   12/16   ( 75.00%)
+DOPPLER_PSAX_level_great_vessels_PA    3/4    ( 75.00%)
+Subcostal_4C                          39/52   ( 75.00%)
+Subcostal_IVC                          6/8    ( 75.00%)
+PSAX_(level_great_vessels)             8/11   ( 72.73%)
+DOPPLER_A4C_IVS                       12/17   ( 70.59%)
+PSAX_(level_great_vessels)_focus_on_PV_and_PA    4/6    ( 66.67%)
+PLAX_AV_MV                             8/13   ( 61.54%)
+PLAX                                  22/38   ( 57.89%)
+A4C                                   40/72   ( 55.56%)
+PLAX_Zoom_out                         27/49   ( 55.10%)
+A3C                                   28/51   ( 54.90%)
+A2C                                   14/26   ( 53.85%)
+A4C_LV                                 1/2    ( 50.00%)
+A4C_MV                                 1/2    ( 50.00%)
+A4C_RV                                 1/2    ( 50.00%)
+SSN_aortic_arch                        1/2    ( 50.00%)
+PSAX_(level_of_papillary_muscles)     12/27   ( 44.44%)
+DOPPLER_PLAX_AV_MV                     7/17   ( 41.18%)
+DOPPLER_PLAX_RVIT                      2/5    ( 40.00%)
+PSAX_(level_great_vessels)_focus_on_TV    2/5    ( 40.00%)
+DOPPLER_A3C                            3/8    ( 37.50%)
+PSAX_(level_of_apex)                  11/30   ( 36.67%)
+DOPPLER_A4C_MV                         4/11   ( 36.36%)
+A2C_LV                                 1/3    ( 33.33%)
+DOPPLER_SC_4C_IVS                      1/3    ( 33.33%)
+DOPPLER_PSAX_level_great_vessels_TV    3/10   ( 30.00%)
+DOPPLER_PSAX_MV                        4/14   ( 28.57%)
+DOPPLER_A5C                            9/33   ( 27.27%)
+DOPPLER_A2C                            3/12   ( 25.00%)
+DOPPLER_PLAX_RVOT                      1/4    ( 25.00%)
+DOPPLER_SSN_Aortic_Arch                1/4    ( 25.00%)
+PLAX_RV_inflow                         1/4    ( 25.00%)
+PLAX_zoomed_AV                         1/4    ( 25.00%)
+DOPPLER_PSAX_level_great_vessels_AV    3/14   ( 21.43%)
+DOPPLER_A3C_AV                         2/10   ( 20.00%)
+DOPPLER_A4C_Pulvns                     2/12   ( 16.67%)
+A3C_LV                                 0/2    (  0.00%)
+A4C_LA                                 0/1    (  0.00%)
+DOPPLER_A3C_MV                         0/5    (  0.00%)
+DOPPLER_A4C_TV                         0/3    (  0.00%)
+DOPPLER_PLAX_AV_zoomed                 0/1    (  0.00%)
+DOPPLER_PLAX_MV_zoomed                 0/2    (  0.00%)
+PLAX_zoomed_MV                         0/1    (  0.00%)
+PSAX_(level_great_vessels)_zoomed_AV    0/2    (  0.00%)
+Subcostal_Abdominal_Aorta              0/1    (  0.00%)
+
+============================================================

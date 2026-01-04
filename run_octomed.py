@@ -164,12 +164,13 @@ def run_inference(num_samples: int = None, save_every: int = 50):
             question = format_question_for_octomed(sample)
             prediction = model.predict(image, question)
 
-            extracted_answer = extract_answer_from_response(prediction)
-            is_correct = extracted_answer == sample["correct_option"]
+            predicted_answer = extract_answer_from_response(prediction)
+            is_correct = predicted_answer == sample["correct_option"]
             results.append({
                 "messages_id": sample["messages_id"],
                 "question": sample["question"],
                 "prediction": prediction,
+                "predicted_answer": predicted_answer,
                 "ground_truth": sample["answer"],
                 "correct_option": sample["correct_option"],
                 "structure": sample["structure"],
