@@ -1,5 +1,5 @@
 ============================================================
-MEDGEMMA RESULTS ACCURACY REPORT
+OCTOMED RESULTS ACCURACY REPORT
 ============================================================
 
 📊 OVERALL ACCURACY
