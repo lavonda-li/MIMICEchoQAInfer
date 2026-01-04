@@ -1,5 +1,5 @@
 ============================================================
-MEDGEMMA RESULTS ACCURACY REPORT
+LLAVA-MED RESULTS ACCURACY REPORT
 ============================================================
 
 📊 OVERALL ACCURACY
